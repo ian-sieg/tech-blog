@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ian's Blog</title>
+  <link rel="stylesheet" href="/css/jass.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+
+  <!-- Materialize -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  {{!-- datepicker styles --}}
+  <link rel="stylesheet" href="https://unpkg.com/js-datepicker/dist/datepicker.min.css">
+
+</head>
+
+<body>
+  {{!-- jquery --}}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+      {{!-- Materialize Navigation Bar --}}
+      <nav>
+        <div>
+          <a href="/">The Tech Blogg</a>
+          <ul>
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li class="logout"><a onclick="logout()">Logout</a></li>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            {{/if}}
+          </ul>
+        </div>
+      </nav>
+
+      <ul class="sidenav" id="moblie-links">
+            <!-- Conditionally render login or logout links -->
+            {{#if logged_in}}
+            <li><a href="/home">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
+            <li><a class="logout" onclick="logout()">Logout</a></li>
+            {{else}}
+            <li><a href="/login">Login</a></li>
+            {{/if}}
+      </ul>
+
+    </header>
+
+    <main class="container container-fluid">
+      {{{ body }}}
+    </main>
+
+  </div>
+
+  <script src="/js/materialize.js"></script>
+  <!-- Render script for logged in users only -->
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+
+</body>
+
+</html>
