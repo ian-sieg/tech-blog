@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const {Sequelize, Op} = require('sequelize');
-const { Trip, User, Hotel, Activity} = require('../models');
+const { User, Post, Comment} = require('../models');
 const withAuth = require('../utils/auth');
 // const unSqlDate = require('../utils/helpers')
 
