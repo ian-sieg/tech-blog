@@ -7,15 +7,22 @@ const withAuth = require('../utils/auth');
 router.get('/', async (req, res) => {
     try {
         const postData = await Post.findAll({
-            include: [{
-                model: User,
-                attributes: ['username']
-            }],
+            include: [
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ],
             order: [
                 ['updated_at', 'ASC']
             ]
         })
         const posts = postData.map((post) => post.get({plain:true}))
+        //Reformat date
+        for (let post of posts) {
+            let updatedAt = new Date(post.updatedAt)
+            post.updatedAt = updatedAt.toDateString()
+        }
         res.render('homepage', {
             posts,
             logged_in: req.session.logged_in
@@ -24,5 +31,13 @@ router.get('/', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
+router.get('/login', async (req, res) => {
+    try {
+        res.render('login')
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 
 module.exports = router;
