@@ -5,3 +5,16 @@
 .pb-1 {
     padding-bottom: 1rem;
 }
+
+.pb-2 {
+    padding-bottom: 2rem;
+}
+
+.update-title {
+    width: 100%;
+}
+
+.update-content {
+    width: 100%;
+    height: max-content;
+}

@@ -99,9 +99,23 @@ router.get('/comments/:id', withAuth, async (req, res) => {
         }
         let createdAt = new Date(post.createdAt)
         post.createdAt = createdAt.toDateString()
-        res.render('post', {
+        res.render('comment', {
             ...post,
             comments,
+            logged_in: req.session.logged_in
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+router.get('/post/:id', withAuth, async (req, res) => {
+    try {
+        const postData = await Post.findByPk(req.params.id)
+        let post = postData.get({plain:true})
+
+        res.render('post', {
+            ...post,
             logged_in: req.session.logged_in
         })
     } catch (error) {
