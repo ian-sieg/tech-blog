@@ -5,7 +5,7 @@ router.post('/', async (req, res) => {
     try {
         const dupData = await User.findOne({where : {username: req.body.username}})
         if (dupData) {
-            res.status(500).end()
+            res.status(409).end()
         } else {
             const userData = await User.create(req.body);
 

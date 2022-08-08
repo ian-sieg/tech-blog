@@ -40,10 +40,12 @@ const signupFormHandler = async (event) => {
         });
 
         if (response.ok) {
+            console.log(response)
             document.location.replace('/dashboard');
+        } else if (response.status === 409) {
+            alert('That username is already in use, please use a different username')
         } else {
             console.log(response.statusText);
-            alert('use a different username')
         }
     }
 };
