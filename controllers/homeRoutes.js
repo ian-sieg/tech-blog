@@ -77,17 +77,31 @@ router.get('/comments/:id', withAuth, async (req, res) => {
         const postData = await Post.findByPk(req.params.id, {
             include: [
                 {
-                    model: Comment,
-                    where: {
-                        post_id: req.params.id
-                    }
+                    model: User,
+                    attributes: ['username']
                 }
             ]
         })
+        const commentData = await Comment.findAll({
+            where: {
+                post_id: req.params.id
+            },
+            include: [{
+                model: User,
+                attributes: ['username']
+            }]
+        })
         const post = postData.get({plain:true})
-        console.log(post)
+        const comments = commentData.map((comment) => comment.get({plain:true}))
+        for (let comment of comments) {
+            let createdAt = new Date(comment.createdAt)
+            comment.createdAt = createdAt.toDateString()
+        }
+        let createdAt = new Date(post.createdAt)
+        post.createdAt = createdAt.toDateString()
         res.render('post', {
             ...post,
+            comments,
             logged_in: req.session.logged_in
         })
     } catch (error) {
