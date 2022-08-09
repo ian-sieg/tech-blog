@@ -28,8 +28,10 @@
                             {{/each}}
                     </ul>
                 </div>
-                <hr>
-                <a class="button is-primary" onclick="newComment()">New Comment</a>
+                {{#if logged_in}}
+                    <hr>
+                    <a class="button is-primary" onclick="newComment()">New Comment</a>
+                {{/if}}
             </div>
         </div>
     </div>

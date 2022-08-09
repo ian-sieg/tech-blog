@@ -1,7 +1,9 @@
 const router = require('express').Router()
 const {Post, Comment} = require('../../models')
+const withAuth = require('../../utils/auth');
 
-router.post('/', async (req, res) => {
+
+router.post('/', withAuth, async (req, res) => {
     try {
         Post.create(
             {
@@ -22,7 +24,7 @@ router.post('/', async (req, res) => {
     }
 })
 
-router.post('/comment', async (req, res) => {
+router.post('/comment', withAuth, async (req, res) => {
     try {
         Comment.create(
             {
