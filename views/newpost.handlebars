@@ -1,20 +1,20 @@
 <div class="column is-8 is-offset-2">
-    <h1 class="ml-3">Update Post</h1>
+    <h1 class="ml-3">New Post</h1>
     <div class="column">
         <form class="card">
             <div class="card-content">
                 <div class="media">
                     <div class="media-content">
-                        <p class="title is-4 pb-2">Update Title</p>
+                        <p class="title is-4 pb-2">Title</p>
                         <input type="text" id="update-title" class="subtitle is-4 update-title" value="{{title}}"></input>
                     </div>
                 </div>
-                <p class="title is-4 pb-2">Update Content</p>
+                <p class="title is-4 pb-2">Content</p>
                 <textarea id="update-content" class="subtitle update-content is-6">{{content}}</textarea>
-                <submit id="test" class="button is-primary" data-id="{{id}}" onclick="update()">Update Post</submit>
+                <submit id="test" class="button is-primary" data-id="{{id}}" onclick="post()">Post!</submit>
             </div>
         </form>
     </div>
 </div>
 
-<script src="/js/update.js"
+<script src="/js/newpost.js"

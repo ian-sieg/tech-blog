@@ -1,22 +1,18 @@
-const router = require('express').Router();
+const router = require('express').Router()
 const {Post} = require('../../models')
 
-router.put('/:id', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        Post.update(
+        Post.create(
             {
                 title: req.body.title,
-                content: req.body.content
-            },
-            {
-                where: {
-                    id: req.params.id
-                }
+                content: req.body.content,
+                user_id: req.session.user_id
             }
         )
         .then((data) => {
             if(!data) {
-                res.status(404).json({message: 'No post found with this is'})
+                res.status(500).json({message: 'Error posting new post'})
                 return;
             }
             res.json(data)
