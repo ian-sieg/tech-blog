@@ -6,7 +6,11 @@
             <div class="card-content">
                 <div class="media">
                     <div class="media-content">
-                        <p class="title is-4">{{post.title}} <a class="button is-primary is-small" href="post/{{post.id}}">Update Post</a> </p>
+                        <p class="title is-4">
+                            {{post.title}}
+                            <a class="button is-primary is-small" href="post/{{post.id}}">Update Post</a>
+                            <a class="button is-danger is-small" id="delete-btn" data-id="{{post.id}}" onclick="destroy()">Delete Post</a>
+                        </p>
                         <p class="subtitle is-6">By: <b>{{post.user.username}}</b> | <i>{{post.createdAt}}</i></p>
                     </div>
                 </div>
@@ -23,3 +27,5 @@
     {{/each}}
     <a class="button is-primary ml-3" href="/newpost">New Post</a>
 </div>
+
+<script src="/js/delete.js"
