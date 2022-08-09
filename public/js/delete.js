@@ -1,5 +1,6 @@
-const destroy = async () => {
-    const response = await fetch(`/api/delete/${$('#delete-btn').data('id')}`, {
+const destroy = async (e) => {
+    e.preventDefault()
+    const response = await fetch(`/api/delete/${e.target.dataset.id}`, {
         method: 'DELETE',
     })
 
@@ -9,3 +10,5 @@ const destroy = async () => {
         console.log(response.statusText)
     }
 }
+
+$('.delete-btn').click(destroy)
