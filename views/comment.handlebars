@@ -29,8 +29,26 @@
                     </ul>
                 </div>
                 <hr>
-                <a class="button is-primary">New Comment</a>
+                <a class="button is-primary" onclick="newComment()">New Comment</a>
             </div>
         </div>
     </div>
 </div>
+
+<div class="column is-8 is-offset-2 invis" id="new-comment">
+    <div class="column">
+        <div class="card">
+            <div class="card-content">
+                <div class="media">
+                    <div class="media-content">
+                        <p class="title is-4">New Comment</p>
+                    </div>
+                </div>
+                <textarea class="update-content mb-2" id="new-comment-content"></textarea>
+                <a class="button is-primary" onclick="postComment()">Post Comment</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/js/comments.js"></script>

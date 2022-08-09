@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {Post} = require('../../models')
+const {Post, Comment} = require('../../models')
 
 router.post('/', async (req, res) => {
     try {
@@ -13,6 +13,27 @@ router.post('/', async (req, res) => {
         .then((data) => {
             if(!data) {
                 res.status(500).json({message: 'Error posting new post'})
+                return;
+            }
+            res.json(data)
+        })
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
+
+router.post('/comment', async (req, res) => {
+    try {
+        Comment.create(
+            {
+                content: req.body.content,
+                user_id: req.session.user_id,
+                post_id: req.body.post_id
+            }
+        )
+        .then((data) => {
+            if(!data) {
+                res.status(500).json({message: 'Error posting comment'})
                 return;
             }
             res.json(data)

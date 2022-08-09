@@ -1,5 +1,5 @@
 <div class="column is-8 is-offset-2">
-    <h1 class="ml-3">Dashboard</h1>
+    <h1 class="ml-3">Your Posts <a class="button is-primary ml-2 mt-1" href="/newpost">New Post</a></h1>
     {{#each posts as |post| }}
     <div class="column">
         <div class="card">
@@ -25,7 +25,6 @@
         </div>
     </div>
     {{/each}}
-    <a class="button is-primary ml-3" href="/newpost">New Post</a>
 </div>
 
 <script src="/js/delete.js"
